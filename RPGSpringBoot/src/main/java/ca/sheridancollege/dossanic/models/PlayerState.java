@@ -37,7 +37,7 @@ public class PlayerState {
 	private BigInteger ndraBalance;	// Personal Bank (Non debt repayment account)
 	
 	// --Inventory and Game History--
-	private List<String> inventory = new ArrayList<>(); // Items being carried
+	private List<Item> inventory = new ArrayList<>(); // Items being carried
 	private List<String> history = new ArrayList<>();	// Story log displayed to user
 	
 	// --Combat and Game State Flags-- 
