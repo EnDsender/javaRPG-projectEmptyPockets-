@@ -22,12 +22,12 @@ public class PlayerState {
 	
 	// --Character ID and Archetype--
 	private String name;
-	private String archetype;		// e.g., "Gutter Runner", "Work Junkie", "One of Those"
-	private String locationId;		// The ID of the current game location (e.g., "CHECKPOINT DMV")
+	private String archetype;		// "Gutter Runner", "Work Junkie", "One of Those"
 	
 	// --Game Stats--
 	private int health;
 	private int maxHealth = 100;
+	
 	private int grit;				// Combat, HP, Strength
 	private int streetSmarts;		// Navigation, finding unique interactions
 	private int technicalSkill;		// Hacking, techie skills
