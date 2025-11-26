@@ -22,6 +22,15 @@ public class Rat extends Enemy {
         this.addType(EnemyType.RAT);
         this.addType(EnemyType.BEAST);
     }
+    
+    Loot normalTail = new Loot(
+    		"rat_tail",
+    		"Rat Tail",
+    		"Used for crafting.",
+    		3,
+    		CraftingType.ORGANICS,
+    		true
+    		);
 
     @Override
     public int getMoveCount() {

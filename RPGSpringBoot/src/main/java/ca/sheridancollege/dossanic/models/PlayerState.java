@@ -32,6 +32,9 @@ public class PlayerState {
 	private int streetSmarts;		// Navigation, finding unique interactions
 	private int technicalSkill;		// Hacking, techie skills
 	private int armorClass;			// Difficulty to hit in combat
+	private int exp;// Experience points
+	private int level;				// Player level based on EXP
+	private int nextLevelExp;		// EXP needed for next level
 	
 	// --Economy--
 	private BigInteger debtAmount;	// Main progress tracker (e.g., 200539846 credits)
@@ -68,4 +71,6 @@ public class PlayerState {
 			return name + " is still standing!";
 		}
 	}
+	
+	
 }
