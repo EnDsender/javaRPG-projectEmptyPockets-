@@ -27,7 +27,7 @@ public class PlayerState {
 	
 	// --Game Stats--
 	private int health;
-	private int maxHealth = 100;
+	private int maxHealth;
 	private int grit;				// Combat, HP, Strength
 	private int streetSmarts;		// Navigation, finding unique interactions
 	private int technicalSkill;		// Hacking, techie skills
@@ -46,7 +46,10 @@ public class PlayerState {
 	private boolean isDead = false;
 	private Object currentEnemy;
 	
+	//--Temporary Buffs and Effects--
 	
+	private int acidStacks = 0;
+	private int attackDebuff= 0;
 	
 	//-- Combat methods --
 	
