@@ -1,0 +1,22 @@
+<div class="game-container">
+    <div class="main-column">
+        <app-story-log></app-story-log>
+        
+        <app-input-panel></app-input-panel>
+
+        <app-action-bar></app-action-bar>
+    </div>
+    
+    <div class="sidebar-column">
+        <app-stat-panel></app-stat-panel>
+
+        <app-inventory-button (openInventoryRequest)="toggleInventory()"></app-inventory-button>
+
+        
+    </div>
+</div>
+
+<app-inventory-screen
+    *ngIf="isInventoryOpen" 
+    (close)="toggleInventory()">
+</app-inventory-screen>

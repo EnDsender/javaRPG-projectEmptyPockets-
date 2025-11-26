@@ -1,0 +1,15 @@
+/* Styling for the prompt */
+.prompt-line {
+    border-top: 1px solid #00ff41;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+.prompt-marker::after {
+    content: '_';
+    animation: blink 1s infinite step-start;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
