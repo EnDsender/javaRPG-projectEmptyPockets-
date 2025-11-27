@@ -27,11 +27,14 @@ public class PlayerState {
 	
 	// --Game Stats--
 	private int health;
-	private int maxHealth = 100;
+	private int maxHealth;
 	private int grit;				// Combat, HP, Strength
 	private int streetSmarts;		// Navigation, finding unique interactions
 	private int technicalSkill;		// Hacking, techie skills
 	private int armorClass;			// Difficulty to hit in combat
+	private int exp;// Experience points
+	private int level;				// Player level based on EXP
+	private int nextLevelExp;		// EXP needed for next level
 	
 	// --Economy--
 	private BigInteger debtAmount;	// Main progress tracker (e.g., 200539846 credits)
@@ -46,7 +49,10 @@ public class PlayerState {
 	private boolean isDead = false;
 	private Object currentEnemy;
 	
+	//--Temporary Buffs and Effects--
 	
+	private int acidStacks = 0;
+	private int attackDebuff= 0;
 	
 	//-- Combat methods --
 	
@@ -65,4 +71,6 @@ public class PlayerState {
 			return name + " is still standing!";
 		}
 	}
+	
+	
 }
