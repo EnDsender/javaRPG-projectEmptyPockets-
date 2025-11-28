@@ -9,28 +9,27 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ActiveQuest {
     
-    private String questId; // Reference to the Template
+    private String questId; 
     private String title;
-    private List<QuestObjective> objectives; // COPIES of the tasks
+    private List<QuestObjective> objectives; 
     private boolean isReadyToTurnIn = false;
 
-    // CONSTRUCTOR: Takes a Template and creates a Player Copy
     public ActiveQuest(Quest template) {
         this.questId = template.getId();
         this.title = template.getTitle();
         
-        // DEEP COPY the objectives so we don't modify the database template!
+        // DEEP COPY
         this.objectives = template.getObjectives().stream()
             .map(obj -> new QuestObjective(
                 obj.getType(), 
                 obj.getTargetId(), 
+                // REMOVED 'questId' HERE
                 obj.getRequiredAmount(), 
-                0, // Reset progress to 0 for the player
+                0, // Reset progress
                 obj.getFlavorText()))
             .collect(Collectors.toList());
     }
 
-    // Check if the whole job is done
     public boolean checkCompletion() {
         boolean allDone = objectives.stream().allMatch(QuestObjective::isCompleted);
         if (allDone) this.isReadyToTurnIn = true;

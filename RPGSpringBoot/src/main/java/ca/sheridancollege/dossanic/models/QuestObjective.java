@@ -15,6 +15,7 @@ public class QuestObjective {
 	//TARGET: What are we checking? (e.g., item ID, location ID, NPC ID)
 	private String targetId;
 	
+
 	
 	//AMOUNT: How many of the target are needed?
 	private int requiredAmount;
@@ -28,5 +29,7 @@ public class QuestObjective {
 	public boolean isCompleted() {
 		return currentAmount >= requiredAmount;
 	}
+
+	
 
 }
