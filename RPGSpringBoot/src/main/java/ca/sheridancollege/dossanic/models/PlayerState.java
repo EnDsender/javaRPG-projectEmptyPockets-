@@ -26,15 +26,17 @@ public class PlayerState {
 	private String locationId;		// The ID of the current game location (e.g., "CHECKPOINT DMV")
 	
 	// --Game Stats--
-	private int health;
-	private int maxHealth;
+	private int health = 100;
+	private int maxHealth = 100;
+	
 	private int grit;				// Combat, HP, Strength
 	private int streetSmarts;		// Navigation, finding unique interactions
 	private int technicalSkill;		// Hacking, techie skills
 	private int armorClass;			// Difficulty to hit in combat
-	private int exp;// Experience points
+	
+	private int exp;					// Experience points
+	private int maxExp;				// EXP needed for next level
 	private int level;				// Player level based on EXP
-	private int nextLevelExp;		// EXP needed for next level
 	
 	// --Economy--
 	private BigInteger debtAmount;	// Main progress tracker (e.g., 200539846 credits)
@@ -43,7 +45,7 @@ public class PlayerState {
 	// --Inventory and Game History--
 	private List<String> inventory = new ArrayList<>(); // Items being carried
 	private List<String> history = new ArrayList<>();	// Story log displayed to user
-	private Weapon equippedWeapon;		// Currently equipped weapon
+	//private Weapon equippedWeapon;		// Currently equipped weapon
 	
 	// --Combat and Game State Flags-- 
 	private boolean isDead = false;
@@ -53,24 +55,5 @@ public class PlayerState {
 	
 	private int acidStacks = 0;
 	private int attackDebuff= 0;
-	
-	//-- Combat methods --
-	
-	public String takeDamage(int damage) 
-	{
-		health -= damage;
-		if (health <= 0) 
-		{
-			health = 0;
-			isDead = true;
-			return name + " has been defeated!";
-		}
 		
-		else 
-		{
-			return name + " is still standing!";
-		}
-	}
-	
-	
 }
