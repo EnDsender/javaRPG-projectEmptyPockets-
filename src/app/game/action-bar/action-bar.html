@@ -1,0 +1,25 @@
+<div class="status-bar-container" *ngIf="playerState$ | async as player">
+    
+    <div class="status-group health">
+        <span class="label">HEALTH:</span>
+        <span class="value">{{ player.health }} / {{ player.maxHealth }}</span>
+        
+        <div class="bar-fill">
+        </div>
+    </div>
+
+    <div class="status-group exp">
+        <span class="label">LVL {{ player.level }}:</span>
+        <span class="value">{{ player.exp }} / {{ player.nextLevelExp }} EXP</span>
+    </div>
+
+    <div class="status-group gear">
+        <span class="label">WEAPON:</span>
+        <span class="value">Worn Pistol</span> 
+    </div>
+
+    <div class="status-group consumables">
+        <span class="label">CONSUMABLES:</span>
+        <span class="value">MedKit (1)</span>
+    </div>
+</div>

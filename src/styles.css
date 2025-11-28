@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+/* src/styles.css or .scss */
+body {
+    /* Background: Deep Black */
+    background-color: #0d0d0d;
+    /* Text Color: Bright Neon Green */
+    color: #00ff41; 
+    /* Font: Monospace for the Terminal Look */
+    font-family: 'Consolas', 'Monaco', monospace; 
+    /* Remove default margins/padding */
+    margin: 0;
+    padding: 20px; /* Optional padding for the edges */
+}
+
+/* Ensure all text inputs and links adopt the theme */
+input[type="text"], button, a {
+    color: #00ff41;
+    font-family: inherit;
+    background-color: transparent;
+    border-color: #00ff41;
+}
+
+/* Optional: Add a subtle text shadow for a glowing effect */
+p, h1, h2, span {
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.4);
+}
