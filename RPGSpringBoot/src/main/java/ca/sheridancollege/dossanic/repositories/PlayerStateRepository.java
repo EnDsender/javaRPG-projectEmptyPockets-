@@ -9,7 +9,7 @@ import ca.sheridancollege.dossanic.models.PlayerState;
 
 @Repository
 public interface PlayerStateRepository extends MongoRepository<PlayerState, String> {
-	//finder method for character selection
+
 	Optional <PlayerState> findByName(String name);
 
 }

@@ -6,49 +6,84 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import ca.sheridancollege.dossanic.models.PlayerState;
+import ca.sheridancollege.dossanic.models.*;
 import ca.sheridancollege.dossanic.repositories.PlayerStateRepository;
 
 @Service
 public class PlayerService {
-	private PlayerStateRepository playerStateRepo;
-	
-	
-	public PlayerService(PlayerStateRepository playerStateRepo) {
-        this.playerStateRepo = playerStateRepo;
+
+    private final PlayerStateRepository playerRepo;
+
+    public PlayerService(PlayerStateRepository playerRepo) {
+        this.playerRepo = playerRepo;
     }
-	
-	public PlayerState getPlayerStateByName(String name) {
-		return playerStateRepo.findByName(name)
-				.orElseThrow(() -> new NoSuchElementException("Player not found with name: " + name));
-	}
-	
-	//default player for testing purposes
-	public PlayerState saveDefaultPlayer() {
-		final BigInteger initialDebt = new BigInteger("2005390846");
-		PlayerState defaultPlayer = new PlayerState(
-		        null, 				// id
-		        "Test Player", 		// name
-		        "Gutter Runner", 	// archetype
-		        "CHECKPOINT DMV", 	// locationId
-		        100, 				// current health
-		        100, 				// maxHealth
-		        5, 					// grit
-		        5, 					// streetSmarts
-		        5, 					// technicalSkill
-		        12, 					// armorClass
-		        0, 					// exp
-		        100, 				// level
-		        1, 					// nextLevelExp
-		        initialDebt, 		// debtAmount (Initial value set here)
-		        new BigInteger("50"), // ndraBalance
-		        new ArrayList<String>(), // inventory
-		        new ArrayList<String>(), // history
-		        false, 				// isDead
-		        null, 				// currentEnemy
-		        0, 					// acidStacks
-		        0 					// attackDebuff
-		    );
-        return playerStateRepo.save(defaultPlayer);
+
+    public PlayerState getPlayerStateByName(String name) {
+        return playerRepo.findByName(name)
+                .orElseThrow(() -> new NoSuchElementException("Player not found: " + name));
+    }
+    
+    public PlayerState getPlayerById(String id) {
+        return playerRepo.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Player not found: " + id));
+    }
+
+    public PlayerState createNewCharacter(String name, String archetypeStr) {
+        PlayerState p = new PlayerState();
+
+        // 1. IDENTITY
+        p.setName(name);
+        p.setLocationId("drydock-checkpoint"); 
+        p.setLevel(1);
+        p.setExp(0);
+        p.setMaxExp(1000);
+        
+        // 2. ECONOMY
+        p.setDebtAmount(new BigInteger("2005390846"));
+        p.setNdraBalance(new BigInteger("0")); 
+
+        // 3. ARCHETYPE LOGIC 
+        if (archetypeStr.equalsIgnoreCase("Gutter Runner")) {
+            p.setArchetype("Gutter Runner");
+            p.setGrit(10);
+            p.setStreetSmarts(14); 
+            p.setTechnicalSkill(8);
+            p.setMaxHealth(18);
+            p.setArmorClass(12);
+                    } 
+        else if (archetypeStr.equalsIgnoreCase("Work Junkie")) {
+            p.setArchetype("Work Junkie");
+            p.setGrit(8);
+            p.setStreetSmarts(10);
+            p.setTechnicalSkill(14); 
+            p.setMaxHealth(16);
+            p.setArmorClass(11);
+            
+        } 
+        else {
+            // Default: One of Those
+            p.setArchetype("One of Those");
+            p.setGrit(14); 
+            p.setStreetSmarts(8);
+            p.setTechnicalSkill(10);
+            p.setMaxHealth(24);
+            p.setArmorClass(13);
+
+        }
+
+        // 4. INITIALIZE EMPTY LISTS
+        p.setHealth(p.getMaxHealth()); 
+        p.setInventory(new ArrayList<>()); 
+        p.setHistory(new ArrayList<>());
+        p.setActiveContracts(new ArrayList<>());
+        p.setCompletedContractIds(new ArrayList<>());
+        
+       
+        p.setEquippedWeapon(null); 
+        
+        return playerRepo.save(p);
+        
+        
+        
     }
 }

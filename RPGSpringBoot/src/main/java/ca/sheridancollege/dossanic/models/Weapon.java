@@ -1,5 +1,7 @@
 package ca.sheridancollege.dossanic.models;
 
+import org.springframework.data.annotation.TypeAlias;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@TypeAlias("weapon")
 public class Weapon extends Item {
 
 	private int baseMinDamage = 1;
